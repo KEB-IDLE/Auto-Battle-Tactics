@@ -105,31 +105,3 @@ public class LoginController : MonoBehaviour
         ));
     }
 }
-
-[System.Serializable]
-public class LoginRequest
-{
-    public string email;
-    public string password;
-}
-
-[System.Serializable]
-public class LoginResponse
-{
-    public string token;
-}
-
-[System.Serializable]
-public class RegisterRequest
-{
-    public string email;
-    public string password;
-    public string nickname;
-}
-
-[System.Serializable]
-public class RegisterResponse
-{
-    public bool success;
-    public string message;
-}
