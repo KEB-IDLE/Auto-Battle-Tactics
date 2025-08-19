@@ -347,11 +347,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void StartGameScene()
+    public void GameStart()
     {
         SceneManager.LoadScene("2-GameScene");
     }
-    public void EndGameScene()
+
+    public void GameEnd()
     {
         ChangeLevel(1);
 
@@ -363,7 +364,7 @@ public class UIManager : MonoBehaviour
     }
 
     // 반드시 최상위 객체 Canvas 밑에 판넬 위치해야 작동
-    public void ShowGameEndPanel()
+    public void ShowEndPanel()
     {
         GameObject canvas = GameObject.Find("Canvas");
         if (canvas != null)
