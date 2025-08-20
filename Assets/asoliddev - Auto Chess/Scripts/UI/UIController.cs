@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour
     public GameObject bonusContainer;
     public GameObject bonusUIPrefab;
 
-   
+
     /// <summary>
     /// Called when a chamipon panel clicked on shop UI
     /// </summary>
@@ -50,7 +50,7 @@ public class UIController : MonoBehaviour
     /// </summary>
     public void Refresh_Click()
     {
-        championShop.RefreshShop(false);   
+        championShop.RefreshShop(false);
     }
 
     /// <summary>
@@ -107,6 +107,20 @@ public class UIController : MonoBehaviour
         Transform icon1 = top.Find("icon 1");
         Transform icon2 = top.Find("icon 2");
 
+        // ✅ 프리팹에 붙인 PrefabIcon.icon을 top/Image에 바로 세팅
+        var topImage = top.Find("Image")?.GetComponent<Image>();
+        if (topImage)
+        {
+            Sprite s = null;
+            if (champion && champion.prefab)
+            {
+                var provider = champion.prefab.GetComponentInChildren<PrefabIcon>(true);
+                if (provider) s = provider.icon;
+            }
+            topImage.sprite = s;
+            topImage.enabled = (s != null);
+            topImage.preserveAspect = false;
+        }
 
         //assign texts from champion info to unit frames
         name.GetComponent<Text>().text = champion.uiname;
@@ -128,7 +142,8 @@ public class UIController : MonoBehaviour
 
 
         //hide bonusus UI
-        foreach (GameObject go in bonusPanels) {
+        foreach (GameObject go in bonusPanels)
+        {
             go.SetActive(false);
         }
 
@@ -149,7 +164,7 @@ public class UIController : MonoBehaviour
 
                 bonusUI.SetActive(true);
 
-                i++;   
+                i++;
             }
         }
     }
@@ -181,7 +196,7 @@ public class UIController : MonoBehaviour
         SetTimerTextActive(false);
         shop.SetActive(false);
         gold.SetActive(false);
-        
+
 
         restartButton.SetActive(true);
     }

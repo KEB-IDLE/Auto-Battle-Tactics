@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   prefab: {fileID: 5904177654570877743, guid: 7e8b6777bd6afd142a9a851ae1e531c4, type: 3}
-  attackProjectile: {fileID: 0}
+  attackProjectile: {fileID: -927199367670048503, guid: d125a37eddd05954ea79e5b7ca0d94eb, type: 3}
   uiname: Archer
-  cost: 0
+  cost: 3
   type1: {fileID: 11400000, guid: f3e567881c605d247b05775a39e704ed, type: 2}
   type2: {fileID: 11400000, guid: 3c4644fba6daec0469d795ae15fcc92e, type: 2}
-  health: 100
-  damage: 100
-  attackRange: 15
+  health: 150
+  damage: 20
+  attackRange: 10
