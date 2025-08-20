@@ -558,6 +558,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71348b8d61dcf1b49ad0cde9886ed8e1, type: 2}
   - {fileID: 11400000, guid: 5cf63394b9baea2448068dc4c67f21d0, type: 2}
   - {fileID: 11400000, guid: bf23b019abb08c9409a5dfef78241d45, type: 2}
+  - {fileID: 11400000, guid: 2dead42c161c54d4fa48a59507850629, type: 2}
+  - {fileID: 11400000, guid: a490aeb81c6685144b6a4305078eedb8, type: 2}
+  - {fileID: 11400000, guid: d5a72241370895041a2219d4a744c461, type: 2}
   championTypesArray:
   - {fileID: 11400000, guid: f3e567881c605d247b05775a39e704ed, type: 2}
   - {fileID: 11400000, guid: 33223db9cedb8c045990cb7a3b0144a3, type: 2}
