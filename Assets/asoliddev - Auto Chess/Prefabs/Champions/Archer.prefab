@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5904177654570877736}
   - component: {fileID: 4544310325879595937}
   - component: {fileID: 3858433098675416327}
-  - component: {fileID: 5959837661361019630}
+  - component: {fileID: 6293876080393265495}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976daa3f2bff9b34ebc28fb7a37ee12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 6293876080393265495}
 --- !u!195 &3858433098675416327
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -95,7 +96,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &5959837661361019630
+--- !u!95 &6293876080393265495
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5904177654570877743}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
   m_Controller: {fileID: 9100000, guid: d3b62347ece382345855ef01fa0cabfb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
