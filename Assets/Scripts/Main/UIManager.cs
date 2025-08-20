@@ -358,7 +358,7 @@ public class UIManager : MonoBehaviour
 
         ChangeGold(1000);
 
-        ChangeRecord(1, 1, 0, 10);      // 게임 최종 결과 점수로 변경 요
+        //ChangeRecord(1, 1, 0, 10);      // 게임 최종 결과 점수로 변경 요
 
         SceneManager.LoadScene("1-MainScene");
     }

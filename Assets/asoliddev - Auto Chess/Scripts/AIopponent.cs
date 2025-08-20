@@ -20,6 +20,8 @@ public class AIopponent : MonoBehaviour
     ///The damage that player takes when losing a round
     public int championDamage = 2;
 
+    public int kill;        // 기록 후 랭킹 용도
+
     /// <summary>
     /// Called when map is created
     /// </summary>
@@ -271,6 +273,8 @@ public class AIopponent : MonoBehaviour
 
         if (allDead)
             gamePlayController.EndRound();
+
+        kill++;     // 기록용 추가
     }
 
 

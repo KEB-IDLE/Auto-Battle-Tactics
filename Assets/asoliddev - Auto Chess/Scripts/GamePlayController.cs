@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum GameStage { Preparation, Combat, Loss};
@@ -38,14 +40,18 @@ public class GamePlayController : MonoBehaviour
     [HideInInspector]
     public int currentChampionCount = 0;
     [HideInInspector]
-    public int currentGold = 5;
+    public int currentGold = 50;    // 시연용 수정
     [HideInInspector]
-    public int currentHP = 100;
+    public int currentHP = 1;       // 시연용 수정
     [HideInInspector]
     public int timerDisplay = 0;
 
     public Dictionary<ChampionType, int> championTypeCount;
     public List<ChampionBonus> activeBonusList;
+
+
+    UIManager uiManager;
+    public TMP_Text scoreText;
 
     /// Start is called before the first frame update
     void Start()
@@ -627,7 +633,15 @@ public class GamePlayController : MonoBehaviour
             {
                 currentGameStage = GameStage.Loss;
                 uIController.ShowLossScreen();
-             
+
+
+                uiManager.ChangeRecord(1, 1, 0, aIopponent.kill*10);
+
+                scoreText.text = $"{aIopponent.kill * 10}";
+
+                uiManager.GameEnd();
+
+                uiManager.ShowEndPanel();
             }
             
         }
