@@ -557,7 +557,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fff40124a919ef74488b1da35f6b232e, type: 2}
   - {fileID: 11400000, guid: 71348b8d61dcf1b49ad0cde9886ed8e1, type: 2}
   - {fileID: 11400000, guid: 5cf63394b9baea2448068dc4c67f21d0, type: 2}
-  - {fileID: 11400000, guid: 185debbc3275fd346bf9a36d97fad30a, type: 2}
+  - {fileID: 11400000, guid: bf23b019abb08c9409a5dfef78241d45, type: 2}
   championTypesArray:
   - {fileID: 11400000, guid: f3e567881c605d247b05775a39e704ed, type: 2}
   - {fileID: 11400000, guid: 33223db9cedb8c045990cb7a3b0144a3, type: 2}
@@ -10299,7 +10299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 5
 --- !u!222 &810241418
 CanvasRenderer:
   m_ObjectHideFlags: 0

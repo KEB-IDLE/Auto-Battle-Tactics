@@ -24,7 +24,23 @@ public class AttackBehaviour : StateMachineBehaviour
     {
         //Debug.Log("attack anim finished");
 
-        animator.gameObject.transform.parent.GetComponent<ChampionAnimation>().OnAttackAnimationFinished();
+        var ca = animator.GetComponentInParent<ChampionAnimation>();
+        if (ca != null)
+        {
+            ca.OnAttackAnimationFinished();
+            return;
+        }
+
+        // (폴백) 혹시 애니메이션 쪽이 아니라 컨트롤러에서 처리한다면
+        var ctrl = animator.GetComponentInParent<ChampionController>();
+        if (ctrl != null)
+        {
+            ctrl.OnAttackAnimationFinished();
+            return;
+        }
+
+        // 둘 다 없으면 로그만 남기고 종료 (NRE 방지)
+        Debug.LogWarning($"[AttackBehaviour] No ChampionAnimation/ChampionController found for {animator.name}");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
