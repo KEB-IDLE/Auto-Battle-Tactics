@@ -125,10 +125,8 @@ public class UIController : MonoBehaviour
         //assign texts from champion info to unit frames
         name.GetComponent<Text>().text = champion.uiname;
         cost.GetComponent<Text>().text = champion.cost.ToString();
-        type1.GetComponent<Text>().text = champion.type1.displayName;
-        type2.GetComponent<Text>().text = champion.type2.displayName;
-        icon1.GetComponent<Image>().sprite = champion.type1.icon;
-        icon2.GetComponent<Image>().sprite = champion.type2.icon;
+        type1.GetComponent<Text>().text = champion.type.displayName;
+        icon1.GetComponent<Image>().sprite = champion.type.icon;
     }
 
     /// <summary>

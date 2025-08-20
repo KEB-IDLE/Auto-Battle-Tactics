@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 158504, guid: 5fff089305ef37d4fabcfaa75cd52045, type: 3}
   attackProjectile: {fileID: 0}
-  uiname: Mount_Knight
-  cost: 3
-  type1: {fileID: 11400000, guid: 33223db9cedb8c045990cb7a3b0144a3, type: 2}
-  type2: {fileID: 11400000, guid: d190cf551b5d25645b384a58df4154a0, type: 2}
+  uiname: MountKnight
+  cost: 4
+  type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
   health: 150
-  damage: 20
-  attackRange: 3
+  damage: 22
+  attackRange: 1

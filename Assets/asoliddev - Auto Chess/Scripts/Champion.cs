@@ -21,10 +21,10 @@ public class Champion : ScriptableObject
     public int cost;
 
     ///The type of the champion
-    public ChampionType type1;
+    public ChampionType type;
 
     ///The type of the champion
-    public ChampionType type2;
+
 
     ///The champion character starting health point
     public float health = 100;
