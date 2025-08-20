@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
@@ -39,10 +40,10 @@ public class GamePlayController : MonoBehaviour
     public int currentChampionLimit = 3;
     [HideInInspector]
     public int currentChampionCount = 0;
-    [HideInInspector]
-    public int currentGold = 50;    // 시연용 수정
-    [HideInInspector]
-    public int currentHP = 1;       // 시연용 수정
+ 
+    public int currentGold;    // 시연용 수정 인스펙터에서수정요
+
+    public int currentHP;       // 시연용 수정 인스펙터에서수정요
     [HideInInspector]
     public int timerDisplay = 0;
 
@@ -50,7 +51,7 @@ public class GamePlayController : MonoBehaviour
     public List<ChampionBonus> activeBonusList;
 
 
-    UIManager uiManager;
+    public UIManager uiManager;
     public TMP_Text scoreText;
 
     /// Start is called before the first frame update
@@ -631,17 +632,18 @@ public class GamePlayController : MonoBehaviour
             //check if we have lost
             if (currentHP <= 0)
             {
-                currentGameStage = GameStage.Loss;
-                uIController.ShowLossScreen();
+                uiManager.ChangeLevel(1);
 
+                uiManager.ChangeGold(1000);
 
-                uiManager.ChangeRecord(1, 1, 0, aIopponent.kill*10);
+                uiManager.ChangeRecord(1, 1, 0, Math.Max(SessionManager.Instance.record.rank_point,  aIopponent.kill*10));
 
                 scoreText.text = $"{aIopponent.kill * 10}";
 
-                uiManager.GameEnd();
-
                 uiManager.ShowEndPanel();
+
+                currentGameStage = GameStage.Loss;
+                //uIController.ShowLossScreen();
             }
             
         }

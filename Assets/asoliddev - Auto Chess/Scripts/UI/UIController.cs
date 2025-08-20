@@ -136,7 +136,7 @@ public class UIController : MonoBehaviour
     {
         goldText.text = gamePlayController.currentGold.ToString();
         championCountText.text = gamePlayController.currentChampionCount.ToString() + " / " + gamePlayController.currentChampionLimit.ToString();
-        hpText.text = "HP " + gamePlayController.currentHP.ToString();
+        hpText.text = gamePlayController.currentHP.ToString();
 
 
         //hide bonusus UI

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelupEffectPrefab: {fileID: 6022893094628638925, guid: 3e052aff88b4eeb4da8c715d215dec1f, type: 3}
-  projectileStart: {fileID: 0}
+  projectileStart: {fileID: 790336920361524222}
   gridType: 0
   gridPositionX: 0
   gridPositionZ: 0
@@ -140,9 +140,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5904177654570877739}
     m_Modifications:
+    - target: {fileID: 112962, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166714, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 172222, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 175878, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 179124, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
       propertyPath: m_Name
       value: TT_Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 190290, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 494462, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,5 +212,10 @@ PrefabInstance:
 --- !u!4 &790336920361327546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 494462, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
+  m_PrefabInstance: {fileID: 790336920361423044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &790336920361524222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 166714, guid: 04c79b5f6e9ebab48af48fdcf7b6d570, type: 3}
   m_PrefabInstance: {fileID: 790336920361423044}
   m_PrefabAsset: {fileID: 0}

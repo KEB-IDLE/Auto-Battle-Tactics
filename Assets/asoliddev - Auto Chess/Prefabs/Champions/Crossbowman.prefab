@@ -7297,7 +7297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelupEffectPrefab: {fileID: 6022893094628638925, guid: 3e052aff88b4eeb4da8c715d215dec1f, type: 3}
-  projectileStart: {fileID: 0}
+  projectileStart: {fileID: 173870}
   gridType: 0
   gridPositionX: 0
   gridPositionZ: 0

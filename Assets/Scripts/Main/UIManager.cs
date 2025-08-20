@@ -354,9 +354,9 @@ public class UIManager : MonoBehaviour
 
     public void GameEnd()
     {
-        ChangeLevel(1);
+        //ChangeLevel(1);
 
-        ChangeGold(1000);
+        //ChangeGold(1000);
 
         //ChangeRecord(1, 1, 0, 10);      // 게임 최종 결과 점수로 변경 요
 
