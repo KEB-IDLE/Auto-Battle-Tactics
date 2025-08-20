@@ -94,7 +94,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3e26d22a6afd2244a9c4ecaf6b9adf6e, type: 3}
+  m_Motion: {fileID: 7400000, guid: 90db24b13a227fd46a43bb6cf2c5f729, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -131,7 +131,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: knight ac
+  m_Name: Spear ac
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsIdle
@@ -212,7 +212,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 33bd65223d28b1c4cb76a7bebb02a099, type: 3}
+  m_Motion: {fileID: 7400000, guid: 7ae56d5469e7f334abb22dd37f302bd6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -280,7 +280,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ee2d211244aad6943b091b16a3d94a27, type: 3}
+  m_Motion: {fileID: 7400000, guid: b77a0151c1c2b6842a830f5bc60644c4, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
