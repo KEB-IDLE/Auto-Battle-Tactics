@@ -16,8 +16,7 @@ MonoBehaviour:
   attackProjectile: {fileID: 0}
   uiname: Mage
   cost: 3
-  type1: {fileID: 11400000, guid: f3e567881c605d247b05775a39e704ed, type: 2}
-  type2: {fileID: 11400000, guid: 3c4644fba6daec0469d795ae15fcc92e, type: 2}
-  health: 150
-  damage: 20
+  type: {fileID: 11400000, guid: f162d9987ee1cac47a539bbeb0e6c381, type: 2}
+  health: 80
+  damage: 25
   attackRange: 10

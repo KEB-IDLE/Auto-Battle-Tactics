@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 922b77e70f5edd844bfbf722ca138255, type: 3}
-  m_Name: Commander
+  m_Name: Crossbowman
   m_EditorClassIdentifier: 
-  prefab: {fileID: 134188, guid: 5e2a4de4706a3d346a7528e0512e3edb, type: 3}
+  prefab: {fileID: 145858, guid: f7df3cf86c7056442b40a9f0ec2e6494, type: 3}
   attackProjectile: {fileID: 0}
-  uiname: Commander
-  cost: 3
-  type1: {fileID: 11400000, guid: 33223db9cedb8c045990cb7a3b0144a3, type: 2}
-  type2: {fileID: 11400000, guid: 3c4644fba6daec0469d795ae15fcc92e, type: 2}
-  health: 150
-  damage: 20
-  attackRange: 3
+  uiname: Crossbowman
+  cost: 2
+  type: {fileID: 11400000, guid: f162d9987ee1cac47a539bbeb0e6c381, type: 2}
+  health: 75
+  damage: 18
+  attackRange: 15

@@ -466,67 +466,45 @@ public class GamePlayController : MonoBehaviour
     /// <summary>
     /// Calculates the bonuses we have currently
     /// </summary>
-    private void CalculateBonuses()
+   private void CalculateBonuses()
+{
+    // init dictionary
+    championTypeCount = new Dictionary<ChampionType, int>();
+
+    for (int x = 0; x < Map.hexMapSizeX; x++)
     {
-        //init dictionary
-        championTypeCount = new Dictionary<ChampionType, int>();
-
-        for (int x = 0; x < Map.hexMapSizeX; x++)
+        for (int z = 0; z < Map.hexMapSizeZ / 2; z++)
         {
-            for (int z = 0; z < Map.hexMapSizeZ / 2; z++)
+            if (gridChampionsArray[x, z] != null)
             {
-                //there is a champion
-                if (gridChampionsArray[x, z] != null)
-                {
-                    //get champion
-                    Champion c = gridChampionsArray[x, z].GetComponent<ChampionController>().champion;
+                Champion c = gridChampionsArray[x, z]
+                    .GetComponent<ChampionController>()
+                    .champion;
 
-                    if(championTypeCount.ContainsKey(c.type1))
-                    {
-                        int cCount = 0;
-                        championTypeCount.TryGetValue(c.type1, out cCount);
+                // 단일 타입만 카운트
+                var t = c.type;
+                if (t == null) continue;
 
-                        cCount++;
-
-                        championTypeCount[c.type1] = cCount;
-                    }
-                    else
-                    {
-                        championTypeCount.Add(c.type1, 1);
-                    }
-
-                    if (championTypeCount.ContainsKey(c.type2))
-                    {
-                        int cCount = 0;
-                        championTypeCount.TryGetValue(c.type2, out cCount);
-
-                        cCount++;
-
-                        championTypeCount[c.type2] = cCount;
-                    }
-                    else
-                    {
-                        championTypeCount.Add(c.type2, 1);
-                    }
-
-                }
+                if (championTypeCount.TryGetValue(t, out var cnt))
+                    championTypeCount[t] = cnt + 1;
+                else
+                    championTypeCount.Add(t, 1);
             }
         }
-
-        activeBonusList = new List<ChampionBonus>();
-
-        foreach (KeyValuePair<ChampionType, int> m in championTypeCount)
-        {
-            ChampionBonus championBonus = m.Key.championBonus;
-
-            //have enough champions to get bonus
-            if (m.Value >= championBonus.championCount)
-            {
-                activeBonusList.Add(championBonus);
-            }
-        }
-
     }
+
+    activeBonusList = new List<ChampionBonus>();
+
+    foreach (var kv in championTypeCount)
+    {
+        ChampionBonus championBonus = kv.Key.championBonus;
+        if (championBonus != null && kv.Value >= championBonus.championCount)
+        {
+            activeBonusList.Add(championBonus);
+        }
+    }
+}
+
 
     /// <summary>
     /// Resets all champion stats and positions

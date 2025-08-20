@@ -9202,7 +9202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c991e0ef82e5e574b9482f4e28edce55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 72b99d76e6be1bc4aa3e75762f59b339, type: 3}
 --- !u!114 &419702449312271161
 MonoBehaviour:
   m_ObjectHideFlags: 0

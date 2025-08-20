@@ -315,65 +315,39 @@ public class AIopponent : MonoBehaviour
     /// Calculates champion bonuses
     /// </summary>
     private void CalculateBonuses()
+{
+    // 타입 카운팅 초기화
+    championTypeCount = new Dictionary<ChampionType, int>();
+
+    for (int x = 0; x < Map.hexMapSizeX; x++)
     {
-        //init dictionary
-        championTypeCount = new Dictionary<ChampionType, int>();
-
-        for (int x = 0; x < Map.hexMapSizeX; x++)
+        for (int z = 0; z < Map.hexMapSizeZ / 2; z++)
         {
-            for (int z = 0; z < Map.hexMapSizeZ / 2; z++)
-            {
-                //there is a champion
-                if (gridChampionsArray[x, z] != null)
-                {
-                    //get champion
-                    Champion c = gridChampionsArray[x, z].GetComponent<ChampionController>().champion;
+            var go = gridChampionsArray[x, z];
+            if (go == null) continue;
 
-                    if (championTypeCount.ContainsKey(c.type1))
-                    {
-                        int cCount = 0;
-                        championTypeCount.TryGetValue(c.type1, out cCount);
+            var cc = go.GetComponent<ChampionController>();
+            if (cc == null || cc.champion == null) continue;
 
-                        cCount++;
+            // ✅ 단일 타입만 사용
+            var t = cc.champion.type;
+            if (t == null) continue;
 
-                        championTypeCount[c.type1] = cCount;
-                    }
-                    else
-                    {
-                        championTypeCount.Add(c.type1, 1);
-                    }
-
-                    if (championTypeCount.ContainsKey(c.type2))
-                    {
-                        int cCount = 0;
-                        championTypeCount.TryGetValue(c.type2, out cCount);
-
-                        cCount++;
-
-                        championTypeCount[c.type2] = cCount;
-                    }
-                    else
-                    {
-                        championTypeCount.Add(c.type2, 1);
-                    }
-
-                }
-            }
+            if (championTypeCount.TryGetValue(t, out var cnt))
+                championTypeCount[t] = cnt + 1;
+            else
+                championTypeCount.Add(t, 1);
         }
-
-        activeBonusList = new List<ChampionBonus>();
-
-        foreach (KeyValuePair<ChampionType, int> m in championTypeCount)
-        {
-            ChampionBonus championBonus = m.Key.championBonus;
-
-            //have enough champions to get bonus
-            if (m.Value >= championBonus.championCount)
-            {
-                activeBonusList.Add(championBonus);
-            }
-        }
-
     }
+
+    // 적용 가능한 보너스 산출
+    activeBonusList = new List<ChampionBonus>();
+    foreach (var kv in championTypeCount)
+    {
+        var bonus = kv.Key.championBonus;
+        if (bonus != null && kv.Value >= bonus.championCount)
+            activeBonusList.Add(bonus);
+    }
+}
 
 }

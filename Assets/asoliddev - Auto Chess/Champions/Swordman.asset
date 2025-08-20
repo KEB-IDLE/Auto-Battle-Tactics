@@ -16,8 +16,7 @@ MonoBehaviour:
   attackProjectile: {fileID: 0}
   uiname: Swordman
   cost: 3
-  type1: {fileID: 11400000, guid: 33223db9cedb8c045990cb7a3b0144a3, type: 2}
-  type2: {fileID: 11400000, guid: 200e54a10084f3941a1f2a3354741fb1, type: 2}
-  health: 150
-  damage: 20
-  attackRange: 3
+  type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
+  health: 100
+  damage: 14
+  attackRange: 1

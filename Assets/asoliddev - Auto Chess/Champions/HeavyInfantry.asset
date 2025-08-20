@@ -16,8 +16,7 @@ MonoBehaviour:
   attackProjectile: {fileID: 0}
   uiname: HeavyInfantry
   cost: 3
-  type1: {fileID: 11400000, guid: 33223db9cedb8c045990cb7a3b0144a3, type: 2}
-  type2: {fileID: 11400000, guid: 3c4644fba6daec0469d795ae15fcc92e, type: 2}
-  health: 150
-  damage: 20
-  attackRange: 3
+  type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
+  health: 160
+  damage: 18
+  attackRange: 1
