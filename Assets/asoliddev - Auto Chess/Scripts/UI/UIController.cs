@@ -96,37 +96,52 @@ public class UIController : MonoBehaviour
     /// <param name="index"></param>
     public void LoadShopItem(Champion champion, int index)
     {
-        //get unit frames
+        // 루트
         Transform championUI = championsFrameArray[index].transform.Find("champion");
-        Transform top = championUI.Find("top");
-        Transform bottom = championUI.Find("bottom");
-        Transform type1 = top.Find("type 1");
-        Transform type2 = top.Find("type 2");
-        Transform name = bottom.Find("Name");
-        Transform cost = bottom.Find("Cost");
-        Transform icon1 = top.Find("icon 1");
-        Transform icon2 = top.Find("icon 2");
+        if (!championUI) { Debug.LogError($"[UI] 'champion' not found at slot {index}"); return; }
 
-        // ✅ 프리팹에 붙인 PrefabIcon.icon을 top/Image에 바로 세팅
-        var topImage = top.Find("Image")?.GetComponent<Image>();
-        if (topImage)
+        // 새 구조: champion 바로 아래 자식들만 사용
+        var img = championUI.Find("Image")?.GetComponent<Image>(); // 큰 이미지
+        var nameT = championUI.Find("Name")?.GetComponent<Text>();
+        var costT = championUI.Find("Cost")?.GetComponent<Text>();
+        var typeI = championUI.Find("TypeIcon")?.GetComponent<Image>(); // 타입은 아이콘만
+                                                                        // coin(우상 코인)은 에디터에서 스프라이트만 넣어두면 코드 불필요
+
+        // 큰 이미지: 프리팹의 PrefabIcon.icon
+        if (img)
         {
-            Sprite s = null;
-            if (champion && champion.prefab)
-            {
-                var provider = champion.prefab.GetComponentInChildren<PrefabIcon>(true);
-                if (provider) s = provider.icon;
-            }
-            topImage.sprite = s;
-            topImage.enabled = (s != null);
-            topImage.preserveAspect = false;
+            var s = (champion && champion.prefab)
+                    ? champion.prefab.GetComponentInChildren<PrefabIcon>(true)?.icon
+                    : null;
+
+            img.sprite = s;
+            img.type = Image.Type.Simple;   // 기본 이미지
+            img.preserveAspect = false;     // 비율 유지 안 함
+
+            // 부모(champion) RectTransform을 꽉 채우기
+            var rt = img.rectTransform;
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+
+            // cover 강제하던 ARF 제거
+            var arf = img.GetComponent<AspectRatioFitter>();
+            if (arf) Destroy(arf);
         }
 
-        //assign texts from champion info to unit frames
-        name.GetComponent<Text>().text = champion.uiname;
-        cost.GetComponent<Text>().text = champion.cost.ToString();
-        type1.GetComponent<Text>().text = champion.type.displayName;
-        icon1.GetComponent<Image>().sprite = champion.type.icon;
+        // 텍스트
+        if (nameT) nameT.text = champion ? champion.uiname : "-";
+        if (costT) costT.text = champion ? champion.cost.ToString() : "0";
+
+        // 타입 아이콘(이름 텍스트는 표시하지 않음)
+        if (typeI)
+        {
+            var spr = (champion && champion.type != null) ? champion.type.icon : null;
+            typeI.sprite = spr;
+            typeI.enabled = (spr != null);
+        }
     }
 
     /// <summary>
