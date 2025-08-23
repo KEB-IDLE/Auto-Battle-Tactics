@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Crossbowman
   m_EditorClassIdentifier: 
   prefab: {fileID: 145858, guid: f7df3cf86c7056442b40a9f0ec2e6494, type: 3}
-  attackProjectile: {fileID: 100000, guid: 544332687cbe63e4eacb769a2e8846f9, type: 3}
+  attackProjectile: {fileID: 0}
   uiname: Crossbowman
   cost: 2
   type: {fileID: 11400000, guid: f162d9987ee1cac47a539bbeb0e6c381, type: 2}
