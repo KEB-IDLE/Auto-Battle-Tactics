@@ -347,19 +347,27 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void GameStart()
+    public void GameStart(int sceneIndex)
     {
-        SceneManager.LoadScene("2-GameScene");
+        switch (sceneIndex)
+        {
+            case 1:
+                SceneManager.LoadScene("2-GameScene_1");
+                break;
+            case 2:
+                SceneManager.LoadScene("2-GameScene_2");
+                break;
+            case 3:
+                SceneManager.LoadScene("2-GameScene_3");
+                break;
+            default:
+                Debug.LogWarning("잘못된 씬 번호입니다: " + sceneIndex);
+                break;
+        }
     }
 
     public void GameEnd()
     {
-        //ChangeLevel(1);
-
-        //ChangeGold(1000);
-
-        //ChangeRecord(1, 1, 0, 10);      // 게임 최종 결과 점수로 변경 요
-
         SceneManager.LoadScene("1-MainScene");
     }
 
