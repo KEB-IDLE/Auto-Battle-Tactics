@@ -573,7 +573,7 @@ MonoBehaviour:
   activeBonusList: []
   uiManager: {fileID: 1641265994}
   scoreText: {fileID: 1479542827}
-  combatOnly: {fileID: 0}
+  combatOnly: {fileID: 268828409}
 --- !u!114 &27158424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13406,7 +13406,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cdf2a5bd1b7b97e4886e5b9c340db8bd, type: 2}
+  - {fileID: 2100000, guid: ab94971015b57f140b0bba8840d70310, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

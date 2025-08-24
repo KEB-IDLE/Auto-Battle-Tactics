@@ -2963,10 +2963,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  speedMultiplier: 1.5
+  speedMultiplier: 2
   rootDuration: 1
   trapCooldown: 4
-  verboseLog: 1
 --- !u!54 &211169400
 Rigidbody:
   m_ObjectHideFlags: 0
