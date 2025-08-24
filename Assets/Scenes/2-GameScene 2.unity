@@ -11260,6 +11260,10 @@ MonoBehaviour:
   speedMultiplier: 0.5
   rootDuration: 1
   trapCooldown: 4
+  zoneLoopEffect: {fileID: 6262241374213919440, guid: dc35675d7a28aa74da9b18b47557df9c, type: 3}
+  autoScaleToCollider: 1
+  radiusScale: 1
+  effectYOffset: 0.01
 --- !u!54 &883364477
 Rigidbody:
   m_ObjectHideFlags: 0
