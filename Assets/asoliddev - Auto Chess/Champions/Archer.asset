@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 5904177654570877743, guid: 7e8b6777bd6afd142a9a851ae1e531c4, type: 3}
   attackProjectile: {fileID: 0}
   uiname: Archer
-  cost: 2
+  cost: 1
   type: {fileID: 11400000, guid: f162d9987ee1cac47a539bbeb0e6c381, type: 2}
   health: 70
   damage: 15

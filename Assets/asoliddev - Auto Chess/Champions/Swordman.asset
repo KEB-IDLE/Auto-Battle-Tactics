@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 155132, guid: b3b5ac73709403a41b03c64cbd8cff10, type: 3}
   attackProjectile: {fileID: 0}
   uiname: Swordman
-  cost: 3
+  cost: 1
   type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
   health: 100
   damage: 14

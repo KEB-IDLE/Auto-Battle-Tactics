@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 182410, guid: bc9fa997b131fe24588bdb07d61a2165, type: 3}
   attackProjectile: {fileID: 0}
   uiname: Knight
-  cost: 3
+  cost: 2
   type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
   health: 120
   damage: 20
