@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum GameStage { Preparation, Combat, Loss};
+public enum GameStage { Preparation, Combat, Loss };
 
 /// <summary>
 /// Controlls most of the game logic and player interactions
@@ -39,7 +39,7 @@ public class GamePlayController : MonoBehaviour
     public int currentChampionLimit = 3;
     [HideInInspector]
     public int currentChampionCount = 0;
- 
+
     public int currentGold;    // 시연용 수정 인스펙터에서수정요
 
     public int currentHP;       // 시연용 수정 인스펙터에서수정요
@@ -52,19 +52,27 @@ public class GamePlayController : MonoBehaviour
 
     public UIManager uiManager;
     public TMP_Text scoreText;
+    [Header("Stage Objects")]
+    [SerializeField] private GameObject combatOnly;
 
     /// Start is called before the first frame update
+    void Awake()
+    {
+        if (combatOnly) combatOnly.SetActive(false); // 다른 컴포넌트 Start 전에 확실히 끔
+    }
     void Start()
     {
         //set starting gamestage
         currentGameStage = GameStage.Preparation;
+
+        if (combatOnly) combatOnly.SetActive(false);
 
         //init arrays
         ownChampionInventoryArray = new GameObject[Map.inventorySize];
         oponentChampionInventoryArray = new GameObject[Map.inventorySize];
         gridChampionsArray = new GameObject[Map.hexMapSizeX, Map.hexMapSizeZ / 2];
 
-        
+
         uIController.UpdateUI();
     }
 
@@ -76,7 +84,7 @@ public class GamePlayController : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            timerDisplay = (int) (PreparationStageDuration - timer);
+            timerDisplay = (int)(PreparationStageDuration - timer);
 
             uIController.UpdateTimerText();
 
@@ -103,7 +111,7 @@ public class GamePlayController : MonoBehaviour
     }
 
 
-  
+
 
     /// <summary>
     /// Adds champion from shop to inventory
@@ -114,7 +122,7 @@ public class GamePlayController : MonoBehaviour
         int emptyIndex = -1;
         for (int i = 0; i < ownChampionInventoryArray.Length; i++)
         {
-            if(ownChampionInventoryArray[i] == null)
+            if (ownChampionInventoryArray[i] == null)
             {
                 emptyIndex = i;
                 break;
@@ -140,7 +148,7 @@ public class GamePlayController : MonoBehaviour
 
         //set grid position
         championController.SetGridPosition(Map.GRIDTYPE_OWN_INVENTORY, emptyIndex, -1);
-        
+
         //set position and rotation
         championController.SetWorldPosition();
         championController.SetWorldRotation();
@@ -149,11 +157,11 @@ public class GamePlayController : MonoBehaviour
         //store champion in inventory array
         StoreChampionInArray(Map.GRIDTYPE_OWN_INVENTORY, map.ownTriggerArray[emptyIndex].gridX, -1, championPrefab);
 
-       
 
-       
+
+
         //only upgrade when in preparation stage
-        if(currentGameStage == GameStage.Preparation)
+        if (currentGameStage == GameStage.Preparation)
             TryUpgradeChampion(champion); //upgrade champion
 
 
@@ -275,12 +283,12 @@ public class GamePlayController : MonoBehaviour
         TriggerInfo triggerinfo = inputController.triggerInfo;
         //if mouse cursor on trigger
         if (triggerinfo != null)
-        { 
+        {
             dragStartTrigger = triggerinfo;
 
             GameObject championGO = GetChampionFromTriggerInfo(triggerinfo);
-            
-            if(championGO != null)
+
+            if (championGO != null)
             {
                 //show indicators
                 map.ShowIndicators();
@@ -307,8 +315,8 @@ public class GamePlayController : MonoBehaviour
         int championsOnField = GetChampionCountOnHexGrid();
 
 
-         if (draggedChampion != null)
-         {
+        if (draggedChampion != null)
+        {
             //set dragged
             draggedChampion.GetComponent<ChampionController>().IsDragged = false;
 
@@ -333,7 +341,7 @@ public class GamePlayController : MonoBehaviour
                 else
                 {
                     //we are adding to combat field
-                    if(triggerinfo.gridType == Map.GRIDTYPE_HEXA_MAP)
+                    if (triggerinfo.gridType == Map.GRIDTYPE_HEXA_MAP)
                     {
                         //only add if there is a free spot or we adding from combatfield
                         if (championsOnField < currentChampionLimit || dragStartTrigger.gridType == Map.GRIDTYPE_HEXA_MAP)
@@ -348,7 +356,7 @@ public class GamePlayController : MonoBehaviour
                                 championsOnField++;
                         }
                     }
-                    else if(triggerinfo.gridType == Map.GRIDTYPE_OWN_INVENTORY)
+                    else if (triggerinfo.gridType == Map.GRIDTYPE_OWN_INVENTORY)
                     {
                         //remove champion from dragged position
                         RemoveChampionFromArray(dragStartTrigger.gridType, dragStartTrigger.gridX, dragStartTrigger.gridZ);
@@ -356,32 +364,32 @@ public class GamePlayController : MonoBehaviour
                         //add champion to dragged position
                         StoreChampionInArray(triggerinfo.gridType, triggerinfo.gridX, triggerinfo.gridZ, draggedChampion);
 
-                        if(dragStartTrigger.gridType == Map.GRIDTYPE_HEXA_MAP)
+                        if (dragStartTrigger.gridType == Map.GRIDTYPE_HEXA_MAP)
                             championsOnField--;
                     }
 
-                   
-   
+
+
                 }
 
 
-              
-                  
+
+
             }
 
 
             CalculateBonuses();
-   
+
             currentChampionCount = GetChampionCountOnHexGrid();
 
             //update ui
             uIController.UpdateUI();
-            
+
 
             draggedChampion = null;
         }
 
-       
+
     }
 
 
@@ -424,7 +432,7 @@ public class GamePlayController : MonoBehaviour
         if (gridType == Map.GRIDTYPE_OWN_INVENTORY)
         {
             ownChampionInventoryArray[gridX] = champion;
-        }    
+        }
         else if (gridType == Map.GRIDTYPE_HEXA_MAP)
         {
             gridChampionsArray[gridX, gridZ] = champion;
@@ -472,44 +480,44 @@ public class GamePlayController : MonoBehaviour
     /// <summary>
     /// Calculates the bonuses we have currently
     /// </summary>
-   private void CalculateBonuses()
-{
-    // init dictionary
-    championTypeCount = new Dictionary<ChampionType, int>();
-
-    for (int x = 0; x < Map.hexMapSizeX; x++)
+    private void CalculateBonuses()
     {
-        for (int z = 0; z < Map.hexMapSizeZ / 2; z++)
+        // init dictionary
+        championTypeCount = new Dictionary<ChampionType, int>();
+
+        for (int x = 0; x < Map.hexMapSizeX; x++)
         {
-            if (gridChampionsArray[x, z] != null)
+            for (int z = 0; z < Map.hexMapSizeZ / 2; z++)
             {
-                Champion c = gridChampionsArray[x, z]
-                    .GetComponent<ChampionController>()
-                    .champion;
+                if (gridChampionsArray[x, z] != null)
+                {
+                    Champion c = gridChampionsArray[x, z]
+                        .GetComponent<ChampionController>()
+                        .champion;
 
-                // 단일 타입만 카운트
-                var t = c.type;
-                if (t == null) continue;
+                    // 단일 타입만 카운트
+                    var t = c.type;
+                    if (t == null) continue;
 
-                if (championTypeCount.TryGetValue(t, out var cnt))
-                    championTypeCount[t] = cnt + 1;
-                else
-                    championTypeCount.Add(t, 1);
+                    if (championTypeCount.TryGetValue(t, out var cnt))
+                        championTypeCount[t] = cnt + 1;
+                    else
+                        championTypeCount.Add(t, 1);
+                }
+            }
+        }
+
+        activeBonusList = new List<ChampionBonus>();
+
+        foreach (var kv in championTypeCount)
+        {
+            ChampionBonus championBonus = kv.Key.championBonus;
+            if (championBonus != null && kv.Value >= championBonus.championCount)
+            {
+                activeBonusList.Add(championBonus);
             }
         }
     }
-
-    activeBonusList = new List<ChampionBonus>();
-
-    foreach (var kv in championTypeCount)
-    {
-        ChampionBonus championBonus = kv.Key.championBonus;
-        if (championBonus != null && kv.Value >= championBonus.championCount)
-        {
-            activeBonusList.Add(championBonus);
-        }
-    }
-}
 
 
     /// <summary>
@@ -553,6 +561,8 @@ public class GamePlayController : MonoBehaviour
 
             //hide timer text
             uIController.SetTimerTextActive(false);
+
+            if (combatOnly) combatOnly.SetActive(true);
 
 
             if (draggedChampion != null)
@@ -598,7 +608,7 @@ public class GamePlayController : MonoBehaviour
             //check if we start with 0 champions
             if (IsAllChampionDead())
                 EndRound();
-           
+
 
         }
         else if (currentGameStage == GameStage.Combat)
@@ -611,6 +621,8 @@ public class GamePlayController : MonoBehaviour
 
             //reset champion
             ResetChampions();
+
+            if (combatOnly) combatOnly.SetActive(false);
 
             //go through all champion infos
             for (int i = 0; i < gameData.championsArray.Length; i++)
@@ -635,7 +647,7 @@ public class GamePlayController : MonoBehaviour
 
                 uiManager.ChangeGold(1000);
 
-                uiManager.ChangeRecord(1, 1, 0, Math.Max(SessionManager.Instance.record.rank_point,  aIopponent.kill*10));
+                uiManager.ChangeRecord(1, 1, 0, Math.Max(SessionManager.Instance.record.rank_point, aIopponent.kill * 10));
 
                 scoreText.text = $"{aIopponent.kill * 10}";
 
@@ -644,7 +656,7 @@ public class GamePlayController : MonoBehaviour
                 currentGameStage = GameStage.Loss;
                 //uIController.ShowLossScreen();
             }
-            
+
         }
     }
 
@@ -659,7 +671,7 @@ public class GamePlayController : MonoBehaviour
         //banked gold
         int bank = (int)(currentGold / 10);
 
-       
+
         income += baseGoldIncome;
         income += bank;
 
@@ -675,7 +687,7 @@ public class GamePlayController : MonoBehaviour
         if (currentGold < 4)
             return;
 
-        if(currentChampionLimit < 9)
+        if (currentChampionLimit < 9)
         {
             //incrase champion limit
             currentChampionLimit++;
@@ -685,9 +697,9 @@ public class GamePlayController : MonoBehaviour
 
             //update ui
             uIController.UpdateUI();
-        
+
         }
-      
+
     }
 
     /// <summary>
@@ -707,8 +719,8 @@ public class GamePlayController : MonoBehaviour
     /// </summary>
     public void RestartGame()
     {
-       
-       
+
+
 
         //remove champions
         for (int i = 0; i < ownChampionInventoryArray.Length; i++)
@@ -746,6 +758,7 @@ public class GamePlayController : MonoBehaviour
         currentHP = 100;
         currentGold = 5;
         currentGameStage = GameStage.Preparation;
+        if (combatOnly) combatOnly.SetActive(false);
         currentChampionLimit = 3;
         currentChampionCount = GetChampionCountOnHexGrid();
 
@@ -756,7 +769,7 @@ public class GamePlayController : MonoBehaviour
 
         //show hide ui
         uIController.ShowGameScreen();
-   
+
 
     }
 

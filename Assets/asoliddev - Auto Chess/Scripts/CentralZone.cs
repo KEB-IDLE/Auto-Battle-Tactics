@@ -1,46 +1,47 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class CentralZone : MonoBehaviour
 {
     public enum Mode { Fast, Slow, IceTrap }
     public Mode mode = Mode.Fast;
 
     [Header("Speed Zone")]
-    public float speedMultiplier = 1.2f;    // Haste=1.2, Slow=0.7
-    public GameObject enterEffect;          // 가속/감속 진입 VFX (선택)
-    public float enterEffectDuration = 1.5f;
+    [Tooltip("원래 유닛 속도에 곱할 배수 (예: 2.0=두배, 0.5=절반)")]
+    public float speedMultiplier = 1.2f;
 
     [Header("Ice Trap")]
-    public float rootDuration = 1.0f;       // 얼음 함정 멈춤 시간
-    public float trapCooldown = 4.0f;       // 유닛별 재적용 쿨다운
-    public GameObject iceEffect;            // 빙결 VFX (선택)
+    public float rootDuration = 1.0f;
+    public float trapCooldown = 4.0f;
 
-    // 유닛별 트랩 재적용 가능 시각
     private readonly Dictionary<GameObject, float> trapReadyAt = new();
+
     private GamePlayController gpc;
+    private Collider zoneCol;
+    private Rigidbody rb;
 
     void Awake()
     {
-        // 전투 단계에서만 동작시키기 위해 참조
-        var scripts = GameObject.Find("Scripts");
-        if (scripts) gpc = scripts.GetComponent<GamePlayController>();
+        gpc = GameObject.Find("Scripts")?.GetComponent<GamePlayController>()
+             ?? Object.FindFirstObjectByType<GamePlayController>();
 
-        // 트리거 충돌을 확실히 받으려면(상대에 Rigidbody가 없어도)
-        // 이 오브젝트에 Kinematic Rigidbody가 있는 게 안전함
-        var rb = GetComponent<Rigidbody>();
+        // 트리거 조건 보장
+        zoneCol = GetComponent<Collider>();
+        if (zoneCol) zoneCol.isTrigger = true;
+
+        rb = GetComponent<Rigidbody>();
         if (!rb) rb = gameObject.AddComponent<Rigidbody>();
         rb.isKinematic = true;
-        rb.useGravity = false;
-
-        // 이 오브젝트에는 Sphere/Box Collider (IsTrigger=On) 필요
+        rb.useGravity  = false;
     }
 
-    bool CombatNow()
+    void OnDisable()
     {
-        return gpc == null || gpc.currentGameStage == GameStage.Combat;
+        trapReadyAt.Clear();
     }
+
+    private bool CombatNow() => gpc == null || gpc.currentGameStage == GameStage.Combat;
 
     void OnTriggerEnter(Collider other)
     {
@@ -54,28 +55,48 @@ public class CentralZone : MonoBehaviour
             if (!trapReadyAt.TryGetValue(champ.gameObject, out var t) || Time.time >= t)
             {
                 trapReadyAt[champ.gameObject] = Time.time + trapCooldown;
-                champ.OnGotStun(rootDuration); // 1초 멈춤
-                if (iceEffect) champ.AddEffect(iceEffect, rootDuration);
+                champ.OnGotStun(rootDuration);
             }
             return;
         }
 
-        // Haste/Slow 공통: 속도 배수 적용 + 효과
-        var store = champ.GetComponent<SpeedController>();
-        if (!store) store = champ.gameObject.AddComponent<SpeedController>();
-        store.SetMultiplier(speedMultiplier);
+        var sc = champ.GetComponent<SpeedController>() ?? champ.gameObject.AddComponent<SpeedController>();
+        sc.SetMultiplier(speedMultiplier);
+    }
 
-        if (enterEffect) champ.AddEffect(enterEffect, enterEffectDuration);
+    void OnTriggerStay(Collider other)
+    {
+        if (!CombatNow()) return;
+
+        var champ = other.GetComponentInParent<ChampionController>();
+        if (!champ || champ.isDead) return;
+
+        if (mode == Mode.IceTrap)
+        {
+            if (!trapReadyAt.TryGetValue(champ.gameObject, out var t) || Time.time >= t)
+            {
+                trapReadyAt[champ.gameObject] = Time.time + trapCooldown;
+                champ.OnGotStun(rootDuration);
+            }
+            return;
+        }
+
+        // 존 안에 있는 동안 배수 유지
+        var sc = champ.GetComponent<SpeedController>() ?? champ.gameObject.AddComponent<SpeedController>();
+        sc.SetMultiplier(speedMultiplier);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (mode == Mode.IceTrap) return;
-
         var champ = other.GetComponentInParent<ChampionController>();
         if (!champ) return;
 
-        var store = champ.GetComponent<SpeedController>();
-        if (store) store.Restore();
+        if (mode != Mode.IceTrap)
+        {
+            var sc = champ.GetComponent<SpeedController>();
+            if (sc) sc.Restore();
+        }
+
+        trapReadyAt.Remove(champ.gameObject);
     }
 }

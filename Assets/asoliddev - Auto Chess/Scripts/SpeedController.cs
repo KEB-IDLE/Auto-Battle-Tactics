@@ -9,20 +9,14 @@ public class SpeedController : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        if (agent != null) baseSpeed = agent.speed;
-    }
-
-    // 라운드 종료 후 사망 → 다음 라운드에 재활성화될 때 원복
-    void OnEnable()
-    {
-        if (!agent) agent = GetComponent<NavMeshAgent>();
-        if (agent && baseSpeed > 0f) agent.speed = baseSpeed;
+        if (agent != null) baseSpeed = agent.speed; // 프리팹 기본 속도 캐싱
     }
 
     public void SetMultiplier(float mul)
     {
         if (!agent) agent = GetComponent<NavMeshAgent>();
         if (!agent) return;
+
         if (baseSpeed <= 0f) baseSpeed = agent.speed;
         agent.speed = baseSpeed * mul;
     }

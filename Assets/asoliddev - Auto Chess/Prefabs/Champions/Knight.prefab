@@ -14810,6 +14810,7 @@ GameObject:
   - component: {fileID: -3395834745515207867}
   - component: {fileID: 6991040335372802131}
   - component: {fileID: 5834582545238537519}
+  - component: {fileID: -4149592402233668225}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -14989,6 +14990,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 540fdcc629691d84da223d87bff50cb2, type: 3}
+  cover: 1
+  aspectOverride: 0
+--- !u!136 &-4149592402233668225
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182410}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &182750
 GameObject:
   m_ObjectHideFlags: 0

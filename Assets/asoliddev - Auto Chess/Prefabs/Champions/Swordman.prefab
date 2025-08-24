@@ -9084,6 +9084,7 @@ GameObject:
   - component: {fileID: 419702449312271161}
   - component: {fileID: 6522977226069252204}
   - component: {fileID: 3979988447352167642}
+  - component: {fileID: 7612385873551429218}
   m_Layer: 0
   m_Name: Swordman
   m_TagString: Untagged
@@ -9203,6 +9204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 72b99d76e6be1bc4aa3e75762f59b339, type: 3}
+  cover: 1
+  aspectOverride: 0
 --- !u!114 &419702449312271161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9263,6 +9266,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &7612385873551429218
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155132}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &156456
 GameObject:
   m_ObjectHideFlags: 0
