@@ -17,6 +17,6 @@ MonoBehaviour:
   uiname: Crossbowman
   cost: 2
   type: {fileID: 11400000, guid: f162d9987ee1cac47a539bbeb0e6c381, type: 2}
-  health: 75
-  damage: 18
+  health: 80
+  damage: 20
   attackRange: 15

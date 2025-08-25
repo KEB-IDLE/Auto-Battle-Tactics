@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Guard
   m_EditorClassIdentifier: 
   displayName: Guard
-  icon: {fileID: 21300000, guid: d1debd018f9877c408ca2c35857bb8c2, type: 3}
+  icon: {fileID: 21300000, guid: 8c9bfd928f78cb541b9b79cfb995e5ae, type: 3}
   championBonus:
-    championCount: 3
-    championBonusType: 1
+    championCount: 2
+    championBonusType: 3
     bonusTarget: 0
-    bonusValue: 20
-    duration: 0
+    bonusValue: 3
+    duration: 1
     effectPrefab: {fileID: 0}

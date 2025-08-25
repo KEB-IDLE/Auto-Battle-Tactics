@@ -17,6 +17,6 @@ MonoBehaviour:
   uiname: Swordman
   cost: 1
   type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
-  health: 100
-  damage: 14
+  health: 105
+  damage: 13
   attackRange: 2

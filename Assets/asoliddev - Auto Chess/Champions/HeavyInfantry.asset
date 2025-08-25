@@ -17,6 +17,6 @@ MonoBehaviour:
   uiname: HeavyInfantry
   cost: 3
   type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
-  health: 160
-  damage: 18
+  health: 170
+  damage: 17
   attackRange: 2

@@ -17,6 +17,6 @@ MonoBehaviour:
   uiname: Archer
   cost: 1
   type: {fileID: 11400000, guid: f162d9987ee1cac47a539bbeb0e6c381, type: 2}
-  health: 70
-  damage: 15
+  health: 65
+  damage: 14
   attackRange: 15

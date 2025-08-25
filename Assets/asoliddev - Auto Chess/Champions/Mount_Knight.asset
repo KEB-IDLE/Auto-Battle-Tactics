@@ -16,7 +16,7 @@ MonoBehaviour:
   attackProjectile: {fileID: 0}
   uiname: MountKnight
   cost: 4
-  type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
-  health: 150
-  damage: 22
+  type: {fileID: 11400000, guid: 979595b9797bda44c9d37aa85696b909, type: 2}
+  health: 160
+  damage: 23
   attackRange: 3

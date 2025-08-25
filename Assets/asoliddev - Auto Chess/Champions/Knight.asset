@@ -16,7 +16,7 @@ MonoBehaviour:
   attackProjectile: {fileID: 0}
   uiname: Knight
   cost: 2
-  type: {fileID: 11400000, guid: 8849a8d96bd7866498a7f066116ec068, type: 2}
-  health: 120
-  damage: 20
+  type: {fileID: 11400000, guid: 979595b9797bda44c9d37aa85696b909, type: 2}
+  health: 130
+  damage: 19
   attackRange: 2

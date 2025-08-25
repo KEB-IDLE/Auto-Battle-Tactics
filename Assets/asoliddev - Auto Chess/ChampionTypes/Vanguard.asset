@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Vanguard
   m_EditorClassIdentifier: 
   displayName: Vanguard
-  icon: {fileID: 21300000, guid: bbceae73b019590439ef5129744308a1, type: 3}
+  icon: {fileID: 21300000, guid: 896dada9aa8b8444b8145f80381d5fda, type: 3}
   championBonus:
-    championCount: 4
-    championBonusType: 3
+    championCount: 2
+    championBonusType: 1
     bonusTarget: 0
-    bonusValue: 10
-    duration: 1
+    bonusValue: 20
+    duration: 0
     effectPrefab: {fileID: 0}
