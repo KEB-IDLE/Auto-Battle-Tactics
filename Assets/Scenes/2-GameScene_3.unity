@@ -21173,7 +21173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Refresh
+  m_Text: Reroll
 --- !u!222 &1744076386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21637,7 +21637,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy lvl
+  m_Text: LevelUp
 --- !u!222 &1775839622
 CanvasRenderer:
   m_ObjectHideFlags: 0
