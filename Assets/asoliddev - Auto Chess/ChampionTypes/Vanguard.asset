@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vanguard
   m_EditorClassIdentifier: 
   displayName: Vanguard
-  icon: {fileID: 21300000, guid: 2935f6269b94d0b4c8e6d4ea02b9682f, type: 3}
+  icon: {fileID: 21300000, guid: bbceae73b019590439ef5129744308a1, type: 3}
   championBonus:
     championCount: 4
     championBonusType: 3

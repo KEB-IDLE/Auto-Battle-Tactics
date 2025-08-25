@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arcane
   m_EditorClassIdentifier: 
   displayName: Arcane
-  icon: {fileID: 21300000, guid: 041b35f312f35dd479d07764ff1e7914, type: 3}
+  icon: {fileID: 21300000, guid: c0ea4b6e528e7fe4aa6cdc94d38691a1, type: 3}
   championBonus:
     championCount: 2
     championBonusType: 0
