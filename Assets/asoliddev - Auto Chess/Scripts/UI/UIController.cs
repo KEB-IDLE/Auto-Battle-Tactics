@@ -160,6 +160,9 @@ public class UIController : MonoBehaviour
             var arf = img.GetComponent<AspectRatioFitter>();
             if (arf) Destroy(arf);
         }
+        var coinRoot = championUI.Find("coin");
+        var coinText = coinRoot ? coinRoot.GetComponentInChildren<Text>(true) : null;
+        if (coinText) coinText.text = champion ? champion.cost.ToString() : "";
 
         // 텍스트
         if (nameT) nameT.text = champion ? champion.uiname : "-";
