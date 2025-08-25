@@ -9,6 +9,8 @@ using UnityEngine.UI;
 /// </summary>
 public class UIController : MonoBehaviour
 {
+    [SerializeField, Range(0.5f, 1f)]
+    float imageScale = 0.9f;
     public ChampionShop championShop;
     public GamePlayController gamePlayController;
 
@@ -115,11 +117,39 @@ public class UIController : MonoBehaviour
                     : null;
 
             img.sprite = s;
-            img.type = Image.Type.Simple;   // 기본 이미지
-            img.preserveAspect = false;     // 비율 유지 안 함
+            img.type = Image.Type.Simple;
+            img.preserveAspect = true;
 
-            // 부모(champion) RectTransform을 꽉 채우기
+            var slot = championUI.GetComponent<RectTransform>();   // 부모(슬롯)
             var rt = img.rectTransform;
+
+            // 1) 이미지 Rect를 중앙 고정
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = Vector2.zero;
+
+            // 2) 실제 슬롯 크기 기준으로 “가로 n%” 사이즈 계산 (비율 유지)
+            Canvas.ForceUpdateCanvases();
+            float slotW = slot.rect.width;
+            float slotH = slot.rect.height;
+
+            // 스프라이트 비율(없으면 2:3 가정)
+            float aspect = (s && s.rect.height > 0) ? (s.rect.width / s.rect.height) : (2f / 3f);
+
+            // 우선 가로 기준으로 축소
+            float targetW = slotW * imageScale;
+            float targetH = targetW / aspect;
+
+            // 세로가 슬롯을 넘치면 세로 기준으로 재조정
+            if (targetH > slotH * imageScale)
+            {
+                targetH = slotH * imageScale;
+                targetW = targetH * aspect;
+            }
+
+            // 3) 최종 사이즈 적용
+            rt.sizeDelta = new Vector2(targetW, targetH);
+
             rt.anchorMin = Vector2.zero;
             rt.anchorMax = Vector2.one;
             rt.pivot = new Vector2(0.5f, 0.5f);
