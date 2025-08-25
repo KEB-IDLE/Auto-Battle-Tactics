@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fac3d74b7cdd33d478f3b35897aa410e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 159545
+  packageName: Auto Chess
+  packageVersion: 1.0
+  assetPath: Assets/asoliddev - Auto Chess/ChampionTypes/Wizard.asset
+  uploadId: 355440

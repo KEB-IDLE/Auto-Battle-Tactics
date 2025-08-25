@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8191d570540da414ea3456b2b856d4d4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 159545
+  packageName: Auto Chess
+  packageVersion: 1.0
+  assetPath: Assets/asoliddev - Auto Chess/ChampionTypes/Nature.asset
+  uploadId: 355440
